@@ -1,0 +1,46 @@
+/* Formulario */
+.form-publicar {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    padding: 20px;
+    background-color: var(--eerie-black-2);
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Añadido el box-shadow */
+    color: var(--white);
+}
+
+.form-publicar label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-publicar input, .form-publicar select, .form-publicar textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--quick-silver);
+    border-radius: 5px;
+    background-color: var(--eerie-black-3);
+    color: var(--white);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Añadido el box-shadow */
+}
+
+.form-publicar button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: var(--gold-crayola);
+    color: var(--eerie-black-1);
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.form-publicar button:hover {
+    background-color: var(--white-alpha-20);
+    color: var(--white);
+}
+
+.form-publicar textarea {
+    resize: none;
+}

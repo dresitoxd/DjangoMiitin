@@ -1,0 +1,20 @@
+
+{% extends 'miitinScanner/base.html' %}
+{% load static %}
+
+{% block title %}Cerrar Sesión{% endblock %}
+{% block css %} <link rel="stylesheet" type="text/css" href="{% static 'css/logout.css' %}"> {% endblock %}
+{% block js %} <script src="{% static 'js/logout.js' %}"></script> {% endblock %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/logout.css'%}">
+<script src="{% static 'js/logout.js' %}"></script>
+<main>
+    <section class="section text-center" aria-label="logout">
+        <div class="container">
+            <h2 class="title-4">Has cerrado sesión correctamente</h2>
+        </div>
+    </section>
+</main>
+{% endblock %}

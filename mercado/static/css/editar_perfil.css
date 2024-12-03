@@ -1,0 +1,101 @@
+/* Estilos generales */
+.profile-edit-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: var(--eerie-black-2);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+/* Estilo para los campos */
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--quick-silver);
+}
+
+.profile-picture-preview {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--gold-crayola);
+}
+
+/* Botón de reemplazar imagen */
+.replace-image-button .btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: var(--gold-crayola);
+    color: var(--eerie-black-1);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.replace-image-button .btn:hover {
+    background-color: var(--white-alpha-20);
+    color: var(--white);
+}
+
+/* Estilo para el campo de descripción */
+/* Estilo para el textarea */
+textarea#id_description {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: rem;
+    border: 2px solid var(--gold-crayola);
+    border-radius: 5px;
+    background-color: white;
+    color: var(--eerie-black-3); /* Color del texto */
+    resize: none;
+    font-weight: bold; /* Texto en negrita */
+}
+
+/* Estilo al hacer focus en el textarea */
+textarea#id_description:focus {
+    outline: none;
+    border-color: var(--gold-crayola);
+    box-shadow: 0 0 5px var(--gold-crayola);
+    font-weight: bold; /* Mantener texto en negrita */
+}
+
+
+/* Botón para guardar */
+.btn-primary {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: var(--gold-crayola);
+    color: var(--eerie-black-1);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--white-alpha-20);
+    color: var(--white);
+}
+
+select#id_tcgs {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid var(--gold-crayola);
+    border-radius: 5px;
+    background-color: white;
+    color: var(--eerie-black-3);
+    resize: none;
+}

@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--eerie-black-2);
+    color: var(--white);
+}
+
+/* Estilos del contenedor del chatbot */
+.chat-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: var(--davys-grey);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chat-box {
+    height: 400px;
+    overflow-y: scroll;
+    border: 1px solid var(--eerie-black-1);
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: var(--smoky-black-1);
+    color: var(--white);
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--quick-silver);
+    color: var(--black);
+}
+
+.user-message {
+    background-color: var(--gold-crayola);
+    color: var(--smoky-black-2);
+    text-align: right;
+}
+
+.bot-message {
+    background-color: var(--smoky-black-3);
+    color: var(--white);
+}
+
+/* Estilos específicos del input y botón del chatbot */
+.chat-container input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--eerie-black-1);
+    background-color: var(--eerie-black-1);
+    color: var(--white);
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.chat-container button {
+    padding: 10px 20px;
+    background-color: var(--gold-crayola);
+    color: var(--smoky-black-2);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.chat-container button:hover {
+    background-color: var(--smoky-black-2);
+    color: var(--gold-crayola);
+}
+
+/* Estilos del contenedor de entrada (input + botón) */
+.input-container {
+    display: flex;
+    align-items: center;
+}

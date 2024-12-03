@@ -1,0 +1,58 @@
+{% extends 'miitinScanner/base.html' %}
+{% load static %}
+
+{%block css%} <link rel="stylesheet" href="{% static 'css/perfil.css' %}"> {%endblock%}
+
+{% block title %}Perfil de {{ user.username }}{% endblock %}
+
+{% block content %}
+<main class="main-content">
+    <section class="section text-center" aria-label="perfil">
+        <div class="container">
+            <h2 class="title-4">Perfil de {{ user.username }}</h2>
+
+            <!-- Contenedor del perfil -->
+            <div class="profile-container">
+                <!-- Imagen de perfil -->
+                <div class="profile-picture-container">
+                    {% if user_profile.profile_picture %}
+                        <img src="{{ user_profile.profile_picture.url }}" alt="Foto de perfil de {{ user.username }}" class="profile-picture">
+                    {% else %}
+                        <img src="{% static 'images/default-profile.png' %}" alt="Foto de perfil predeterminada" class="profile-picture">
+                    {% endif %}
+                </div>
+
+                <!-- Información de perfil -->
+                <div class="profile-info">
+                    <p class="bio">
+                        {{ user_profile.description|default:"No has añadido una descripción aún." }}
+                    </p>
+                </div>
+            </div>
+
+            <!-- Botones -->
+            <div class="button-container">
+                <a href="{% url 'editar_perfil' %}" class="btn btn-primary">Modificar Perfil</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Línea divisoria -->
+    <hr class="section-divider">
+
+    <!-- Mostrar Cartas Publicadas -->
+    <section class="section" aria-label="cartas-publicadas">
+        <div class="container">
+            <h3 class="title-5">Mis Cartas Publicadas</h3>
+            <div class="cards-grid">
+                {% for carta in cartas %}
+                    <div class="card-item" tabindex="0">
+                        <img src="{{ carta.image.url }}" alt="Carta {{ carta.title }}" class="card-image">
+                        <p class="card-title">{{ carta.title }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

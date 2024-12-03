@@ -1,0 +1,28 @@
+{% extends 'miitinScanner/base.html' %}
+{% load static %}
+
+{% block title %}Registrarse{% endblock %}
+
+{%block css%} <link rel="stylesheet" type="text/css" href="{% static 'css/registro.css' %}"> {%endblock%}
+
+{% block content %}
+<main class="main-content">
+    <section class="section text-center" aria-label="register">
+        <div class="container">
+            <h2 class="title-4">Crear Cuenta</h2>
+
+            <div class="form-container">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                        <a href="{% url 'index' %}" class="btn btn-secondary">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

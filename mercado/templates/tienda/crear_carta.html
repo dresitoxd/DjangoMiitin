@@ -1,0 +1,31 @@
+<!-- templates/users/crear_subasta.html -->
+{% extends 'miitinScanner/base.html' %}
+{% load static %}
+
+{% block css%} <link rel="stylesheet" href="{% static 'css/crear_carta.css' %}"> {% endblock %}
+
+{% block title %}Publicar Carta{% endblock %}
+
+{% block content %}
+<main>
+    <section class="section text-center" aria-label="crear subasta">
+        <div class="container">
+            <h2 class="title-4">Publica una nueva carta</h2>
+            <br>
+
+            <div class="form-container">
+                <form method="post" enctype="multipart/form-data" class="styled-form">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">Publicar</button>
+                        <a href="{% url 'tienda' %}" class="btn btn-secondary">Cancelar</a> <!-- Botón Cancelar -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

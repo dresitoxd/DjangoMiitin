@@ -1,0 +1,40 @@
+{% extends 'miitinScanner/base.html' %}
+
+{% block title %} Carrito de Compras {% endblock %}
+
+{%block css%} <link rel="stylesheet" type="text/css" href="{% static 'css/carrito.css' %}"> {%endblock%}
+
+{% block content %}
+<br><br><br><br>
+<main>
+    <section class="carrito-dashboard">
+        <h1 class="title">Tu Carrito</h1>
+        {% if carrito %}
+            <ul class="carrito-list">
+                {% for item in items %}
+                    <li class="carrito-item">
+                        <div class="carrito-item-details">
+                            <img src="{{ item.carta.image.url }}" alt="{{ item.carta.title }}" class="carrito-item-img">
+                            <div class="carrito-item-info">
+                                <h3>{{ item.carta.title }}</h3>
+                                <p>Cantidad: {{ item.cantidad }}</p>
+                                <p>Precio: ${{ item.carta.price }}</p>
+                                <p>Total: ${{ item.total }}</p> <!-- Aquí debería aparecer el total por item -->
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <div class="carrito-total">
+                <h3>Total del carrito: ${{ total_carrito }}</h3> <!-- Total calculado y pasado por la vista -->
+                <a href="{% url 'boleta' %}" class="btn btn-primary">Proceder al pago</a>
+                <br>
+                <a href="{% url 'tienda' %}" class="btn btn-primary">Tienda</a>
+            </div>
+
+        {% else %}
+            <p>No tienes productos en tu carrito.</p>
+        {% endif %}
+    </section>
+</main>

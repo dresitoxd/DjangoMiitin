@@ -1,0 +1,130 @@
+.price-input {
+    background-color: var(--white); /* Fondo blanco */
+    border: 2px solid var(--gold-crayola); /* Borde dorado */
+    color: var(--smoky-black-2); /* Texto oscuro */
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.price-input:focus {
+    outline: none;
+    box-shadow: 0 0 8px var(--gold-crayola); /* Sombra en el foco */
+}
+    
+.input-bid {
+    background-color: white; /* Fondo blanco */
+    border: 2px solid var(--gold-crayola); /* Borde dorado */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    font-size: 1rem; /* Tamaño de fuente */
+    color: var(--smoky-black-3); /* Color de texto */
+    outline: none; /* Elimina el borde azul predeterminado al hacer clic */
+    transition: border-color 0.3s ease; /* Transición suave al cambiar el borde */
+}
+
+.input-bid:focus {
+    border-color: var(--smoky-black-1); /* Cambia el color del borde al enfocar */
+    box-shadow: 0 0 5px var(--gold-crayola); /* Efecto de sombra al enfocar */
+}
+    
+.grid-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Asegura 5 columnas por fila */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.service-card {
+    background-color: var(--eerie-black-2);
+    border-radius: 8px;
+    padding: 20px; /* Aumenta el padding para hacer las cards más grandes */
+    box-shadow: 0 4px 15px var(--black-alpha-30); /* Aumenta la sombra para darle más profundidad */
+    min-height: 500px; /* Aumenta la altura mínima de las cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    transition: transform 0.3s;
+    border: 2px solid var(--gold-crayola);
+}
+
+.card-banner {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5px;
+    font-size: 2rem;
+    color: var(--quick-silver);
+    margin-top: 10px;
+}
+
+.card-content p {
+    margin: 5px 0;
+    line-height: 1.5;
+    color: var(--quick-silver);
+}
+
+.card-title {
+    font-size: 1.4rem; /* Aumenta el tamaño del título */
+    font-weight: bold;
+    color: var(--gold-crayola);
+    margin-bottom: 10px;
+}
+
+.pujas {
+    margin-top: 20px;
+    font-size: 2rem;
+}
+
+.pujas h4 {
+    color: var(--gold-crayola);
+    font-size: 1.2rem;
+}
+
+.pujas ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pujas li {
+    font-size: 15px;
+    color: var(--quick-silver);
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 1rem;
+}
+
+.btn {
+    background-color: var(--gold-crayola);
+    color: #fff;
+    padding: 12px 25px; /* Aumenta el tamaño del botón */
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--smoky-black-1); /* Cambia el color al pasar el mouse */
+}

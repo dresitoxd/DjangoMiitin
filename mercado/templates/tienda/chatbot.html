@@ -1,0 +1,145 @@
+{% extends 'miitinScanner/base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAI Streaming Example</title>
+    <style>
+        /* Body settings */
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--eerie-black-3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: var(--white);
+        }
+
+        /* Form layout */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background-color: var(--black-alpha-30);
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 600px;
+        }
+
+        /* Textarea settings */
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            font-size: 1.5rem; /* Increased only the text size */
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            resize: vertical; /* Allow vertical resize */
+            color: var(--black);
+            overflow-y: auto; /* Enable scroll when text exceeds the box */
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--gold-crayola);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: var(--gold-crayola);
+            color: var(--black);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--smoky-black-2);
+        }
+
+        /* Message area */
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            display: inline;
+            max-width: 80%;
+            margin-bottom: 20px;
+            color: var(--white);
+            margin-top: 20px;
+            overflow-y: auto; /* Enable scroll if text exceeds area */
+            max-height: 60vh; /* Limit the height to ensure it doesn't overflow */
+        }
+
+    </style>
+</head>
+<body>
+    <form>
+        <pre id="body"></pre>
+        <textarea id="input" placeholder="Enter your message"></textarea>
+        <button type="button" id="submit-btn">Send</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        const body = document.getElementById('body');
+        const submit_btn = document.getElementById('submit-btn');
+        const input = document.getElementById('input');
+
+        // Función para enviar el mensaje
+        async function sendMessage() {
+            const response = await fetch("/respuesta/", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({message: input.value})
+            });
+
+            const reader = response.body.getReader();
+            let output = "";
+
+            while (true) {
+                const {done, value} = await reader.read();
+                output += new TextDecoder().decode(value);
+                body.innerHTML = marked.parse(output);
+
+                if (done) {
+                    break;
+                }
+            }
+
+            // Borrar el texto del input después de enviar
+            input.value = '';
+            input.focus();  // Mantener el foco en el campo de texto
+        }
+
+        // Enviar al hacer clic en el botón
+        submit_btn.addEventListener("click", async (e) => {
+            e.preventDefault();  // Prevenir la recarga de la página
+            await sendMessage();
+        });
+
+        // Enviar al presionar Enter (sin recargar la página)
+        input.addEventListener("keydown", async (e) => {
+            if (e.key === "Enter" && !e.shiftKey) { // Si se presiona Enter sin Shift
+                e.preventDefault();  // Prevenir nueva línea
+                await sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
+{% endblock %}

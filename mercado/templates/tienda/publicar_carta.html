@@ -1,0 +1,21 @@
+{% extends 'miitinScanner/base.html' %}
+{% block title %}Publicar Carta{% endblock %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/publicar_carta.css'%}"> {%endblock%}
+
+{% block content %}
+<main class="main-content">
+    <section class="section">
+        <div class="container">
+            <h2 class="title-4" style="text-align: center; margin-bottom: 20px;">Publicar una Carta</h2>
+
+            <!-- Formulario -->
+            <form action="" method="POST" enctype="multipart/form-data" class="form-publicar">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Publicar</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

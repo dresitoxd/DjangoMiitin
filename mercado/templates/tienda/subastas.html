@@ -1,0 +1,109 @@
+{% extends 'miitinScanner/base.html' %}
+{% load static %}
+
+{% block title %} Miitin TCG {% endblock %}
+
+{%block css%} <link rel="stylesheet" href="{% static 'css/subasta.css' %}"> {%endblock%}
+
+{% block content %}
+
+<main>
+  <article>
+    <!-- carrusel -->
+    <section class="hero text-center" aria-label="home" id="home">
+        <ul class="hero-slider" data-hero-slider>
+
+            <li class="slider-item active" data-hero-slider-item>
+
+                <div class="slider-bg">
+                    <img src="{% static 'images/hero-slider2.png' %}" width="1880" height="950" alt="" class="img-cover">
+                </div>
+
+                <p class="label-2 section-subtitle slider-reveal">TCG | Mitos Y Leyendas</p>
+
+                <h1 class="display-1 hero-title slider-reveal">
+                    Mitos y Leyendas
+                </h1>
+
+                <p class="body-2 hero-text slider-reveal">
+                    Idea tus mejores tech con tus leyendas favoritas
+                </p>
+
+                <a href="#" class="btn btn-primary slider-reveal">
+                    <span class="text text-1"> Mira las subastas</span>
+                    <span class="text text-2" aria-hidden="true"> Mira las subastas</span>
+                </a>
+            </li>
+
+
+    </section>
+
+    <!-- Servicios -->
+    <section class="section service bg-black-10 text-center" aria-label="service">
+        <div class="container">
+            <p class="section-subtitle label-2"></p>
+            <h3 class="title-4 card-title">
+                <a href="#">Bienvenido a las subastas de Mitos Y Leyendas</a>
+            </h3>
+            <p class="section-subtitle label-2">Publica tus cartas para recibir las mejores ofertas</p>
+            <a href="{% url 'crear_subasta' %}" class="btn-text hover-underline label-2">Publicar Subasta</a>
+
+            <ul class="grid-list">
+                {% for subasta in subastas %}
+                <li>
+                    <div class="service-card">
+                        <a href="#" class="has-before hover:shine">
+                            <figure class="card-banner img-holder" style="--width: 285; --height:336">
+                                <img src="{{ subasta.image.url }}" width="285" height="336" 
+                                loading="lazy" alt="{{ subasta.description }}" class="img-cover">
+                            </figure>
+                        </a>
+
+                        <div class="card-content">
+                            <h3 class="title-4 card-title">
+                                <a href="#" style="font-size: 3rem;">{{ subasta.title }}</a>
+                            </h3>
+
+                            <p><strong>Descripcion:</strong> {{ subasta.description }}</p>
+                            <p><strong>Juego:</strong> {{ subasta.game }}</p>
+                            <p><strong>Rareza:</strong> {{ subasta.rarity }}</p>
+                            <p><strong>Estado:</strong> {{ subasta.condition }}</p>
+                            <p><strong>Duración:</strong> {{ subasta.duration }} hora</p>
+                            <p><strong>Duración restante:</strong> <span class="countdown" data-end-time="{{ subasta.end_time|date:'c' }}"></span></p>
+                            
+                            <!-- Mostrar pujas -->
+                            <div class="pujas">
+                                <h4>Pujas realizadas:</h4>
+                                <ul>
+                                    {% for puja in subasta.pujas.all %}
+                                    <li>
+                                        <strong>{{ puja.user.username }}:</strong> {{ puja.amount }} CLP
+                                    </li>
+                                    {% empty %}
+                                    <li>No hay pujas aún.</li>
+                                    {% endfor %}
+                                </ul>
+
+                                <!-- Formulario para hacer una puja -->
+                                <form id="form-puja" action="#" method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="amount">Puja:</label>
+                                        <input type="number" id="amount" name="amount" class="form-control input-bid" required min="1">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Realizar Puja</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+  </article>
+</main>
+
+
+{% endblock %}

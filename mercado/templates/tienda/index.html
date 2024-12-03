@@ -1,0 +1,353 @@
+{% extends 'miitinScanner/base.html' %}
+{% load static %}
+
+
+{%block title%} Miitin TCG {% endblock %}
+
+{% block content %}
+      <main>
+        <article>
+            <!-- carrusel -->
+
+            <section class="hero text-center" aria-label="home" id="home">
+                <ul class="hero-slider" data-hero-slider>
+
+                    <li class="slider-item active" data-hero-slider-item>
+
+                        <div class="slider-bg">
+                            <img src="{% static 'images/hero-slider1.png' %}" width="1880" height="950" alt="" class="img-cover">
+                        </div>
+
+                        <p class="label-2 section-subtitle slider-reveal">TCG | Konami</p>
+
+                        <h1 class="display-1 hero-title slider-reveal">
+                            ¡ Yu-Gi-Oh !
+                        </h1>
+
+                        <p class="body-2 hero-text slider-reveal">
+                            Adentrate en este interesante mundo lleno de estrategias.
+                        </p>
+
+                        <a href="#" class="btn btn-primary slider-reveal">
+                            <span class="text text-1"> Mira la Tienda</span>
+                            <span class="text text-2" aria-hidden="true"> Mira la Tienda</span>
+                        </a>
+                    </li>
+
+                    <li class="slider-item" data-hero-slider-item>
+
+                        <div class="slider-bg">
+                            <img src="{% static 'images/hero-slider2.png' %}" width="1880" height="950" alt="" class="img-cover">
+                        </div>
+
+                        <p class="label-2 section-subtitle slider-reveal">TCG | Salo</p>
+
+                        <h1 class="display-1 hero-title slider-reveal">
+                            Mitos y Leyendas
+                        </h1>
+
+                        <p class="body-2 hero-text slider-reveal">
+                            Juega con tus leyendas o mitos favoritos creando tu propia estrategia
+                        </p>
+
+                        <a href="#" class="btn btn-primary slider-reveal">
+                            <span class="text text-1"> Mira la Tienda</span>
+                            <span class="text text-2" aria-hidden="true"> Mira la Tienda</span>
+                        </a>
+                    </li>
+
+                    <li class="slider-item" data-hero-slider-item>
+
+                        <div class="slider-bg">
+                            <img src="{% static 'images/hero-slider3.jpg' %}" width="1880" height="950" alt="" class="img-cover">
+                        </div>
+
+                        <p class="label-2 section-subtitle slider-reveal">TCG | Hudson Soft</p>
+
+                        <h1 class="display-1 hero-title slider-reveal">
+                            Pokemon TCG
+                        </h1>
+
+                        <p class="body-2 hero-text slider-reveal">
+                            Colecciona tus pokemons favoritos y pelea junto a ellos
+                        </p>
+
+                        <a href="#" class="btn btn-primary slider-reveal">
+                            <span class="text text-1"> Mira la Tienda</span>
+                            <span class="text text-2" aria-hidden="true"> Mira la Tienda</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+
+                <button class="slider-btn prev" aria-label="slide to previous" data-prev-btn>
+                    <ion-icon name="chevron-back"></ion-icon>
+                </button>
+
+                <button class="slider-btn next" aria-label="slide to next" data-next-btn>
+                    <ion-icon name="chevron-forward"></ion-icon>
+                </button>
+
+                <a href="#" class="hero-btn has-after">
+                    <img src="{% static 'images/hero-icon.png' %}" width="58" height="58" alt="booking icon">
+                    <span class="label-2 text-center span">Encuentra tu mazo</span>
+                </a>
+
+            </section>
+
+
+            <!-- Servicios -->
+
+            <section class="section service bg-black-10 text-center" aria-label="service">
+                <div class="container">
+
+                    <p class="section-subtitle label-2"></p>
+
+                    <h2 class="headline-1 section-title"></h2>
+
+                    <p class="section-text centered-text">
+                        En <strong>Miitin</strong>, nos enorgullece ser el puente que une a tres grandes comunidades apasionadas por los TCG. <br>
+                        Nuestro objetivo es ofrecerte toda la información necesaria para que puedas explorar y disfrutar de este increíble mundo. <br>
+                        <br>
+                        Agradecemos tu confianza en nosotros. A continuación, encontrarás los distintos TCG que tenemos para ti. 
+                        Elige el que más te interese para conocer más detalles, buscar cartas específicas, 
+                        o descubrir nuevas oportunidades de adquisición e intercambio. ¡El límite lo pones tú!
+                    </p>
+
+                    <ul class="grid-list">
+
+                        <li>
+                            <div class="service-card">
+                                <a href="#" class="has-before hover:shine">
+                                    <figure class="card-banner img-holder" style="--width: 285; --heigth:336">
+                                        <img src="{% static 'images/service-1.jpeg' %}" width="285" height="336" 
+                                        loading="lazy" alt="Mitos y Leyenda" class="img-cover">
+                                    </figure>
+                                </a>
+
+                                <div class="card-content">
+
+                                    <h3 class="title-4 card-title">
+                                        <a href="#">Mitos y Leyendas</a>
+                                    </h3>
+
+                                    <a href="#" class="btn-text hover-underline label-2">Ver Subastas</a>
+
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="service-card">
+                                <a href="#" class="has-before hover:shine">
+                                    <figure class="card-banner img-holder" style="--width: 285; --heigth:336">
+                                        <img src="{% static 'images/service-2.jpg' %}" width="285px" height="336px" 
+                                        loading="lazy" alt="Yu-Gi-Oh" class="img-cover">
+                                    </figure>
+                                </a>
+
+                                <div class="card-content">
+
+                                    <h3 class="title-4 card-title">
+                                        <a href="#">Yu-Gi-Oh</a>
+                                    </h3>
+
+                                    <a href="#" class="btn-text hover-underline label-2">Ver Subastas</a>
+
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="service-card">
+                                <a href="#" class="has-before hover:shine">
+                                    <figure class="card-banner img-holder" style="--width: 285; --heigth:336">
+                                        <img src="{% static 'images/service-3.png' %}" width="285" height="336" 
+                                        loading="lazy" alt="Pokemon TCG" class="img-cover">
+                                    </figure>
+                                </a>
+
+                                <div class="card-content">
+
+                                    <h3 class="title-4 card-title">
+                                        <a href="#">Pokemon TCG</a>
+                                    </h3>
+
+                                    <a href="#" class="btn-text hover-underline label-2">Ver Subastas</a>
+
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                    <img src="assets/images/logo-pokemon.png" width="246" height="412" loading="lazy" 
+                    alt="shape" 
+                        class="shape shape-1 move-anim">
+                    <img src="assets/images/logo_myl.png" width="246" height="412" loading="lazy" 
+                    alt="shape" 
+                        class="shape shape-1 move-anim">
+                    <img src="assets/images/yugi-logo.png" width="246" height="412" loading="lazy" 
+                    alt="shape" 
+                        class="shape shape-1 move-anim">
+
+
+                </div>
+            </section>
+
+            <!-- acerca de nosotros -->
+
+            <section class="section about text-center" aria-labelledby="acerca-de-nosotros" id="about">
+                <div class="container">
+            
+                    <div class="about-content">
+                        <p class="label-2 section-subtitle">¿Por qué escogimos este mundo?</p>
+            
+                        <h2 class="headline-1 section-title">Si te interesa, te lo comentamos</h2>
+                        
+                        <p class="section-text">
+                            Todo esto comenzó ya que Miitin está formado por jugadores tanto amateurs como veteranos.
+                            Llegamos a la conclusión de que no existe un lugar específico para informarse sobre este mundo
+                            y que tampoco el mercado se refleja con la mejor transparencia posible. 
+                        </p>
+                        <p class="section-text">
+                            Es por eso que, en conjunto como equipo, hemos querido proponer esta solución: una página que no solo 
+                            brinde información, sino que también ayude a estabilizar el mercado. La inexperiencia de algunos jugadores puede 
+                            hacer que terminen pagando precios injustos o vendiendo sus cartas por un valor demasiado bajo. Miitin 
+                            viene a solucionar eso.
+                        </p>
+            
+                        <div class="contact-info">
+                            <p class="contact-label">Aquí está el teléfono de contacto para cualquier consulta:</p>
+                            <a href="tel:+56995264983" class="body-1 contact-number hover-underline">+569-95264983</a>
+                        </div>
+        
+                    </div>
+            
+                </div>
+            </section>
+
+
+        </article>
+      </main>
+<style>
+
+.centered-text {
+    text-align: justify; 
+    margin: 0 auto; 
+    width: 80%; 
+    line-height: 1.8; 
+}    
+/* Acerca de nosotros*/
+
+.section.about {
+    padding: 60px 20px;
+    background-color: var(--eerie-black-2);
+    color: var(--white);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-subtitle {
+    font-size: 2rem;
+    color: var(--gold-crayola);
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.section-text {
+    font-size: 2rem;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    margin: 20px 0;
+}
+
+.contact-label {
+    font-size: 1.1rem;
+    color: var(--quick-silver);
+}
+
+.contact-number {
+    font-size: 1.3rem;
+    color: var(--gold-crayola);
+    text-decoration: none;
+}
+
+.contact-number:hover {
+    text-decoration: underline;
+    color: var(--white);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid var(--gold-crayola);
+    color: var(--gold-crayola);
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background-color: var(--gold-crayola);
+    color: var(--eerie-black-2);
+}
+
+.about-banner {
+    margin-top: 30px;
+}
+
+.about-image {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--black-alpha-30);
+}
+
+
+/* Servicios*/
+.grid-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Tres columnas del mismo tamaño */
+  gap: 20px; /* Espacio entre las columnas */
+  justify-content: center; /* Opcional: centra los elementos dentro del contenedor */
+  list-style: none; /* Elimina los estilos de lista */
+  padding: 0; /* Elimina el padding por defecto */
+  margin: 0; /* Elimina el margin por defecto */
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--eerie-black-4); /* Fondo opcional */
+  padding: 10px; /* Padding interno */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.1); /* Sombra suave para resaltar */
+  transition: box-shadow 0.3s ease-in-out; /* Suaviza el cambio de sombra */
+}
+
+.service-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 255, 255, 0.2); /* Sombra más fuerte al pasar el ratón */
+}
+      </style>
+{% endblock %}      
+</body>
+</html>

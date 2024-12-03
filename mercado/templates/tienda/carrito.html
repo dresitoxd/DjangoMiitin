@@ -1,0 +1,13 @@
+{% extends 'miitinScanner/base.html' %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'css/carrito.css' %}"> {% endblock %}
+
+{% block content %}
+<h2>Carrito de compras</h2>
+{% for item in items %}
+<li>
+    {{ item.carta.title }} x {{ item.cantidad }} - ${{ item.total }}
+</li>
+{% endfor %}
+
+{%endblock%}

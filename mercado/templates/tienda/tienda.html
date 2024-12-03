@@ -1,0 +1,81 @@
+{% extends 'miitinScanner/base.html' %}
+{% load static %}
+
+{%block css%} <link rel="stylesheet" href="{% static 'css/tienda.css'%}"> {%endblock%}
+
+{% block title %} Miitin TCG {% endblock %}
+
+{% block content %}
+<main>
+  <article>
+    <!-- carrusel -->
+    <section class="hero text-center" aria-label="home" id="home">
+        <ul class="hero-slider" data-hero-slider>
+            <li class="slider-item active" data-hero-slider-item>
+                <div class="slider-bg">
+                    <img src="{% static 'images/hero-slider2.png' %}" width="1880" height="950" alt="" class="img-cover">
+                </div>
+                <p class="label-2 section-subtitle slider-reveal">TCG | Mitos Y Leyendas</p>
+                <h1 class="display-1 hero-title slider-reveal">
+                    Mitos y Leyendas
+                </h1>
+                <p class="body-2 hero-text slider-reveal">
+                    Idea tus mejores tech con tus leyendas favoritas
+                </p>
+                <a href="#" class="btn btn-primary slider-reveal">
+                    <span class="text text-1"> Mira la tienda</span>
+                    <span class="text text-2" aria-hidden="true"> Mira las ofertas</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <section class="section service bg-black-10 text-center" aria-label="service">
+        <div class="container">
+            <p class="section-subtitle label-2"></p>
+            <a href="{% url 'carrito_dashboard' %}" class="btn-text hover-underline label-2">Carrito</a>
+            <p class="section-subtitle label-2"></p>
+            <h3 class="title-4 card-title">
+                <a href="#" style="font-size: 4rem;">Bienvenido a la tienda de Mitos Y Leyendas</a>
+            </h3>
+            <p class="section-subtitle label-2">Publica tus cartas para recibir las mejores ofertas</p>
+            <a href="{% url 'crear_carta' %}" class="btn-text hover-underline label-2">Publicar Carta</a>
+
+            <ul class="grid-list">
+                {% for carta in cartas %}
+                <li>
+                    <div class="service-card">
+                        <a href="#" class="has-before hover:shine">
+                            <figure class="card-banner img-holder" style="--width: 285; --height:336">
+                                <img src="{{ carta.image.url }}" width="285" height="336" 
+                                loading="lazy" alt="{{ carta.description }}" class="img-cover">
+                            </figure>
+                        </a>
+
+                        <div class="card-content">
+                            <h3 class="title-4 card-title">
+                                <a href="#">{{ carta.title }}</a>
+                            </h3>
+                            <p><strong>Descripción:</strong> {{ carta.description }}</p>
+                            <p><strong>Juego:</strong> {{ carta.game }}</p>
+                            <p><strong>Rareza:</strong> {{ carta.rarity }}</p>
+                            <p><strong>Estado:</strong> {{ carta.condition }}</p>
+                            <p><strong>Precio:</strong> {{ carta.price }} CLP</p>
+                            
+                            <!-- Formulario para seleccionar cantidad -->
+                            <form action="{% url 'añadir_al_carrito' carta.id %}" method="post" class="add-to-cart-form">
+                                {% csrf_token %}
+                                <label for="cantidad-{{ carta.id }}" class="label-quantity">Cantidad:</label>
+                                <input type="number" name="cantidad" id="cantidad-{{ carta.id }}" 
+                                       class="input-quantity" min="1" max="99" value="1" required>
+                                <button type="submit" class="btn btn-primary">Añadir al carrito</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+</main>
+{% endblock %}

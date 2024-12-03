@@ -1,0 +1,71 @@
+.form-container {
+    max-width: 600px;
+    margin: 80px auto; /* Margen superior ajustado */
+    padding: 20px;
+    background-color: var(--eerie-black-1); /* Fondo oscuro */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: var(--white); /* Texto blanco */
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--gold-crayola); /* Color de las etiquetas */
+}
+
+.form-container input[type="text"],
+.form-container input[type="password"] {
+    width: 100%;
+    padding: 12px;  /* Aumentado el padding para más espacio */
+    margin-bottom: 15px;
+    border: 1px solid var(--quick-silver); /* Borde gris claro */
+    border-radius: 5px;
+    background-color: var(--eerie-black-2); /* Fondo de los campos */
+    color: var(--white); /* Texto blanco */
+    font-size: 2rem;  /* Aumentado el tamaño de la fuente */
+}
+
+.form-container input[type="text"]:focus,
+.form-container input[type="password"]:focus {
+    outline: none;
+    border-color: var(--gold-crayola); /* Borde dorado al enfocarse */
+    box-shadow: 0 0 5px var(--gold-crayola);
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--gold-crayola); /* Botón principal */
+    color: var(--eerie-black-1); /* Texto del botón principal */
+}
+
+.btn-primary:hover {
+    background-color: var(--white-alpha-20); /* Fondo al pasar el ratón */
+    color: var(--white); /* Cambia el color del texto */
+}
+
+.btn-secondary {
+    background-color: var(--quick-silver); /* Botón secundario */
+    color: var(--black); /* Texto del botón secundario */
+}
+
+.btn-secondary:hover {
+    background-color: var(--black-alpha-30); /* Fondo al pasar el ratón */
+    color: var(--white); /* Cambia el color del texto */
+}

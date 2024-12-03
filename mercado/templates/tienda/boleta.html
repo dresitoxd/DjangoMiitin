@@ -1,0 +1,35 @@
+{% extends 'miitinScanner/base.html' %}
+
+{%block css%} <link rel="stylesheet" type="text/css" href="{% static 'css/boleta.css' %}"> {%endblock%}
+
+{% block content %}
+<h2>Boleta de Compra</h2>
+
+<section class="boleta-container">
+    <div class="boleta-header">
+        <h3>Gracias por tu compra, {{ user.username }}!</h3>
+        <p>Fecha: {{ fecha }}</p>
+    </div>
+
+    <div class="boleta-detalle">
+        <h4>Detalle de la compra</h4>
+        <ul class="boleta-list">
+            {% for detalle in items %}
+            <li class="boleta-item">
+                <div class="boleta-item-details">
+                    <img src="{{ detalle.carta.image.url }}" alt="{{ detalle.carta.title }}" class="boleta-item-img">
+                    <div class="boleta-item-info">
+                        <h5>{{ detalle.carta.title }}</h5>
+                        <p>Cantidad: {{ detalle.cantidad }}</p>
+                        <p>Subtotal: ${{ detalle.subtotal }}</p>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <div class="boleta-total">
+            <h4>Total a pagar: ${{ total_carrito }}</h4>
+        </div>
+    </div>
+</section>

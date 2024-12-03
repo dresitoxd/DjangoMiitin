@@ -1,0 +1,364 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- primeros meta tags -->
+
+    <title>{% block title%}Miitin Scanner{% endblock %}</title>
+    <meta name="title" content="Miitin Scanner - Escaner y venta de cartas TCG">
+    <meta name="description" content="Una pagina diseñada para la venta e informacion de cartas tcg">
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+    <!-- fuente de google font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Forum&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- link de css -->
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    {% block css %}    {% endblock %}
+    {% block script %}    {% endblock %}
+    <!-- imagenes precargadas -->
+     <link rel="preload" href="{% static 'hero-slider1.png' %}">
+     <link rel="preload" href="{% static 'hero-slider2.png' %}">
+     <link rel="preload" href="{% static 'hero-slider3.jpg' %}">
+</head>
+<body>
+    
+    <!-- #preloader -->
+
+    <div class="preload" data-preaload>
+        <div class="circle"></div>
+        <p class="text">Miitin</p>
+    </div>
+
+    <!-- top bar -->
+     <div class="topbar">
+        <div class="container">
+            <address class="topbar-item">
+                <div class="icon">
+                    <ion-icon name="game-controller-outline"></ion-icon>
+                </div>
+
+                <span class="span">
+                    El mundo de los TCG
+                </span>
+            </address>
+            <div class="separator"></div>
+            <div class="topbar-item item-2">
+                <div class="icon">
+                    <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+                </div>
+                <span class="span">Disponible de lunes a domingo 24/7</span>
+            </div>
+
+            <a href="tel:+56995264983" class="topbar-item">
+                <div class="icon">
+                    <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
+                </div>
+                <span class="span">
+                    +569 95264983
+                </span>
+            </a>
+
+            <div class="separator"></div>
+
+            <a href="mailto:" class="topbar-item"></a>
+                <div class="icon">
+                    <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+                </div>
+                <span class="span">
+                    an.baezas@duocuc.cl
+                </span>
+            </a>
+        </div>
+     </div>
+
+     <!-- header -->
+      <header class="header" data-header>
+        <div class="container">
+
+            <a href="#" class="logo">
+                <img src="{% static 'images/mitinlogo.svg' %}" width="80" height="60" alt="Miitin-Home">
+            </a>
+
+            <nav class="navbar" data-navbar>
+                <button class="close-btn" aria-label="close menu" data-nav-toggler>
+                    <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+                </button>
+            
+                <a href="#" class="logo">
+                    <img src="{% static 'images/mitinlogo.svg' %}" width="120" height="60" alt="Miitin-Home">
+                </a>
+            
+                <ul class="navbar-list">
+                    {% if user.is_authenticated %}
+                    <li class="navbar-item">
+                        <a href="{% url 'perfil' %}" class="navbar-link hover-underline">
+                            <div class="separator"></div>
+                            <span class="span">Perfil</span>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    <li class="navbar-item">
+                        <a href="{% url 'index' %}" class="navbar-link hover-underline">
+                            <div class="separator"></div>
+                            <span class="span">Inicio</span>
+                        </a>
+                    </li>
+            
+                    <li class="navbar-item">
+                        <a href="{% url 'chatbot_page' %}" class="navbar-link hover-underline">
+                            <div class="separator"></div>
+                            <span class="span">Consultas</span>
+                        </a>
+                    </li>
+            
+                    <li class="navbar-item">
+                        <a href="{% url 'tienda' %}" class="navbar-link hover-underline">
+                            <div class="separator"></div>
+                            <span class="span">Tienda</span>
+                        </a>
+                    </li>
+            
+                    <li class="navbar-item">
+                        <a href="{% url 'subasta' %}" class="navbar-link hover-underline">
+                            <div class="separator"></div>
+                            <span class="span">Subastas</span>
+                        </a>
+                    </li>
+            
+                    <li class="navbar-item">
+                        <a href="#" class="navbar-link hover-underline">
+                            <div class="separator"></div>
+                            <span class="span">Intercambios</span>
+                        </a>
+                    </li>
+            
+                    {% if not user.is_authenticated %}
+                    <li class="navbar-item">
+                        <a href="{% url 'login' %}" class="navbar-link hover-underline">
+                            <div class="separator"></div>
+                            <span class="span">Iniciar Sesion</span>
+                        </a>
+                    </li>
+            
+                    <li class="navbar-item">
+                        <a href="{% url 'registro' %}" class="navbar-link hover-underline">
+                            <div class="separator"></div>
+                            <span class="span">Registro</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    
+                    {% if user.is_authenticated %}
+                    <li class="navbar-item">
+                        <form method="post" action="{% url 'logout' %}" >
+                            {% csrf_token %}
+                            <button type="submit" class="navbar-link hover-underline" style="color: #FFFF;">
+                                <div class="separator"></div>
+                                <span class="span">Log out</span>
+                            </button>
+                        </form>
+                    </li>
+                    {% endif %}
+                </ul>
+            
+                <div class="text-center">
+                    <p class="headline-1 navbar-title">Disfruta!</p>
+            
+                    <address class="body-4">
+                        La mejor tienda y soporte es, <br>
+                        aquí en miitin escáner
+                    </address>
+            
+                    <p class="body-4 navbar-text">Cualquier reporte a este correo</p>
+                    <a href="mailto:an.baezas@duocuc.cl" class="body-4 sidebar-link">an.baezas@duocuc.cl</a>
+            
+                    <div class="separator"></div>
+            
+                    <p class="contact-label">Contacto de respuestas</p>
+                    <a href="tel:+56995264982" class="body-1 contact-number hover-underline">+569-95264982</a>
+                </div>
+            </nav>
+            
+
+            <a href="#" class="btn btn-secondary">
+                <span class="text text-1">Encuentra tu mundo</span>
+                
+                <span class="text text-2" aria-hidden="true">Encuentra tu mundo</span>
+            </a>
+
+            <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+                <span class="line line-1"></span>
+                <span class="line line-2"></span>
+                <span class="line line-3"></span>
+            </button>
+
+            <div class="overlay" data-nav-toggler data-overlay></div>
+
+        </div>
+      </header>
+
+    {% block content %}
+
+    {% endblock %}
+    <footer class="footer bg-black-10 text-white">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-section">
+                    <h3 class="footer-title">Miitin TCG</h3>
+                    <p class="footer-text">
+                        Conectando comunidades de TCG con transparencia y confianza. 
+                        Todo lo que necesitas para tus juegos de cartas favoritos.
+                    </p>
+                </div>
+    
+                <div class="footer-section">
+                    <h3 class="footer-title">Franquicias</h3>
+                    <ul class="footer-list">
+                        <li><a href="https://tcg.pokemon.com/es-es/" target="_blank" class="footer-link hover-underline">Pokemon TCG</a></li>
+                        <li><a href="https://www.yugioh-card.com/en/" target="_blank" class="footer-link hover-underline">Yu-Gi-Oh!</a></li>
+                        <li><a href="https://casamyl.cl/?srsltid=AfmBOoo8FBCdvvLuZj5k_4kH85KHxMN-WJHvYEDPUlk79prVUAXdWj-p" target="_blank" class="footer-link hover-underline">Mitos y Leyendas</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-section">
+                    <h3 class="footer-title">Contacto</h3>
+                    <p class="footer-text">+569-95264983</p>
+                    <p class="footer-text">soporte@miitin.com</p>
+                    <div class="social-links">
+                        <a href="" class="social-link" aria-label="Facebook">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="footer-bottom">
+                <p class="footer-rights">
+                    Pokémon TCG es propiedad de Hudson Soft. Todos los derechos reservados.<br>
+                    Mitos y Leyendas es propiedad de Salo. Todos los derechos reservados.<br>
+                    Yu-Gi-Oh! es propiedad de Konami. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--eerie-black-3);
+    color: var(--white);
+}
+
+.main-content {
+    padding-top: 100px; /* Espacio entre el header y el contenido */
+    margin: 0 auto;
+    max-width: 1200px; /* Opcional: limita el ancho del contenido */
+}
+.footer {
+    background-color: var(--eerie-black-1);
+    color: var(--white);
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer .container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--gold-crayola);
+}
+
+.footer-text {
+    font-size: 1.7rem;
+    line-height: 1.5;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-link {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.footer-link:hover {
+    color: var(--gold-crayola);
+    text-decoration: underline;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.social-link {
+    color: var(--gold-crayola);
+    font-size: 2rem;
+    transition: color 0.3s;
+}
+
+.social-link:hover {
+    color: var(--white);
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid var(--quick-silver);
+    padding-top: 20px;
+    font-size: 0.8rem;
+    color: var(--quick-silver);
+}
+
+.footer-rights {
+    line-height: 2;
+    font-size: 2rem;
+}
+
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+        <!-- link js -->
+    <script src="{% static 'js/script.js' %}"></script>
+        <!-- ionicon link -->
+     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

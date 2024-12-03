@@ -1,0 +1,31 @@
+<!-- templates/users/login.html -->
+{% extends 'miitinScanner/base.html' %}
+{% load static %}
+
+{% block title %}Iniciar Sesión{% endblock %}
+
+{% block css %} <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"> {% endblock %}
+
+{% block content %}
+<main class="main-content">
+    <section class="section text-center" aria-label="login">
+        <div class="container">
+            <h2 class="title-4">Iniciar Sesión</h2>
+            <br>
+
+            <div class="form-container">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                        <a href="{% url 'index' %}" class="btn btn-secondary">Cancelar</a>
+                        <a href="{% url 'registro' %}" class="btn btn-secondary">Registrar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

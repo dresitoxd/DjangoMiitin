@@ -1,0 +1,73 @@
+{% extends 'miitinScanner/base.html' %}
+{% load static %}
+
+{%block css %} <link rel="stylesheet" href="{% static 'css/editar_perfil.css' %}"> {%endblock%}
+{%block script%} <script src="{% static 'js/scriptMercado.js' %}"></script> {%endblock%}
+
+{% block title %}Editar Perfil{% endblock %}
+
+{% block content %}
+<main class="main-content">
+    <section class="section text-center" aria-label="editar-perfil">
+        <div class="container">
+            <h2 class="title-4">Editar Perfil</h2>
+
+            <form method="post" enctype="multipart/form-data" class="profile-edit-form">
+                {% csrf_token %}
+                
+                <!-- Campo para reemplazar imagen -->
+                <div class="form-group">
+                    <label for="id_profile_picture" class="form-label">Foto de Perfil:</label>
+                    {% if form.profile_picture.value %}
+                        <p><strong>Imagen actual:</strong></p>
+                        <div class="profile-picture-preview">
+                            <img src="{{ form.profile_picture.value.url }}" alt="Imagen actual de perfil" class="profile-picture">
+                        </div>
+                    {% endif %}
+                    <div class="replace-image-button">
+                        <button type="button" class="btn btn-primary" id="replace-image-btn">Reemplazar Imagen</button>
+                    </div>
+                    <!-- Input oculto para selección de archivo de imagen -->
+                    <input type="file" name="profile_picture" id="id_profile_picture" accept="image/*" style="display: none;">
+                </div>
+
+                <!-- Campo para descripción -->
+                <div class="form-group">
+                    <label for="id_bio" class="form-label">Descripción:</label>
+                    <textarea name="description" id="id_description" rows="4" class="form-control" placeholder="Escribe tu descripción aquí...">{{ form.description.value }}</textarea>
+                </div>
+
+                <!-- Campo para seleccionar TCG's -->
+
+                <div class="form-group">
+                    <label for="id_tcgs" class="form-label">¿Qué TCGs juegas?</label>
+                    <select name="tcgs" id="id_tcgs" multiple class="form-control">
+                        <option value="1">Pokémon</option>
+                        <option value="2">Yu-Gi-Oh!</option>
+                        <option value="3">Mitos y Leyendas</option>
+                    </select>
+                </div>
+
+                <!-- Botón para guardar cambios -->
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<script>
+        // Mostrar el input de archivo al hacer clic en "Reemplazar Imagen"
+        document.getElementById('replace-image-btn').addEventListener('click', function () {
+        // Mostrar el input de archivo de imagen
+        document.getElementById('id_profile_picture').click();
+    });
+
+    // Optional: Mostrar el nombre del archivo seleccionado después de elegir una imagen
+    document.getElementById('id_profile_picture').addEventListener('change', function () {
+        if (this.files && this.files[0]) {
+            alert('Imagen seleccionada: ' + this.files[0].name); // Puedes mostrar este nombre en un lugar específico si lo prefieres
+        }
+    });
+</script>
+
+{% endblock %}
